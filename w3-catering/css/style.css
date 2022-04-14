@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+}
+
+body {
+  font-family: "Times New Roman", Georgia, Serif;
+}
+
+section {
+  padding: 64px 32px;
+}
+
+li {
+  text-decoration: none;
+}
+
+hr {
+  border: 1px solid rgba(207, 207, 207, 0.3);
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/* common */
+.section-title {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+  font-size: 36px;
+  line-height: 3;
+}
+
+.sub-title {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+  font-size: 20px;
+  line-height: 3;
+}
+
+.description {
+  line-height: 2;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.content-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-box img {
+  width: 50%;
+  margin: 12px 24px;
+  border-radius: 8px;
+}
+
+.content {
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* navbar */
+#navbar {
+  height: 32px;
+  padding: 14px 32px;
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  font-size: 16px;
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.5);
+  letter-spacing: 5px;
+  z-index: 1;
+}
+
+#navbar ul {
+  padding-right: 32px;
+}
+
+#navbar ul li {
+  padding: 12px 24px;
+  float: left;
+}
+
+#navbar ul li:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* main */
+#main {
+  position: relative;
+  top: -60px;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#main .section-title {
+  position: absolute;
+  left: 32px;
+  bottom: 12px;
+  color: rgb(100, 100, 100);
+}
+
+/* about */
+
+/* menus */
+#menu .menu-item {
+  margin: 32px 0;
+}
+
+#menu .menu-desc {
+  font-size: 12px;
+}
+
+/* contact */
+#contact .address {
+  color: rgba(0, 48, 121, 0.7);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 12px 0;
+}
+
+#contact form {
+  display: flex;
+  flex-direction: column;
+}
+
+#contact input {
+  height: 20px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+#contact button {
+  padding: 12px;
+  border: none;
+}
+
+#contact button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* footer */
+footer {
+  padding: 32px;
+  background-color: lightgrey;
+  line-height: 1.5;
+}

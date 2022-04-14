@@ -1,0 +1,160 @@
+/* common */
+body {
+  font-family: "Karma", serif;
+  line-height: 1.5;
+}
+
+section {
+  margin: 32px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+i {
+  font-style: italic;
+}
+
+.bar {
+  width: 100%;
+  border: 1px solid rgba(214, 214, 214, 0.6);
+}
+
+/* navbar */
+#navbar {
+  margin: 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  z-index: 1;
+  background-color: white;
+}
+
+.navbar__btn {
+  font-size: 24px;
+}
+
+/* foods */
+#foods ul {
+  width: 100%;
+}
+
+#foods ul li {
+  width: 23%;
+  padding: 1%;
+  height: 640px;
+  float: left;
+  line-height: 1.5;
+}
+
+#foods ul li img {
+  width: 100%;
+}
+
+#foods ul li h1 {
+  padding-bottom: 16px;
+}
+
+#foods .page {
+  padding: 32px;
+  text-align: center;
+}
+
+#foods .page span {
+  padding: 8px 16px;
+}
+
+#foods .page span:hover {
+  color: white;
+  background-color: black;
+}
+
+#foods .page span:nth-child(2) {
+  color: white;
+  background-color: black;
+}
+
+#foods .page span:nth-child(2):hover {
+  color: black;
+  background-color: rgba(143, 143, 143, 0.733);
+}
+
+/* man */
+#man img,
+#man p {
+  margin: auto;
+  padding: 24px;
+  width: 80%;
+  max-width: 800px;
+}
+
+/* footer */
+#footer {
+  height: 300px;
+}
+
+#footer h1 {
+  padding-bottom: 8px;
+}
+
+.footer-column li {
+  width: 31%;
+  margin: 1%;
+  float: left;
+}
+
+.blog-posts ul li {
+  width: 90%;
+  padding: 16px;
+  margin: 0;
+  float: left;
+  display: flex;
+  align-items: center;
+}
+
+.blog-posts ul li:hover {
+  background-color: rgba(128, 128, 128, 0.521);
+}
+
+.blog-posts img {
+  width: 60px;
+  height: 60px;
+}
+
+.blog-posts .bar {
+  margin: 0;
+}
+
+.blog-posts div {
+  padding: 4px 8px;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.popular-tags span {
+  margin: 2px;
+  padding: 0 4px;
+  line-height: 3;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(116, 116, 116);
+}
+
+.popular-tags span:first-child {
+  font-size: 16px;
+  background-color: black;
+}
