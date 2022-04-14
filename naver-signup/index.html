@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>네이버 : 회원가입</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/1b6e81dcc2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="libs/BadRequestException.js"></script>
+    <script src="libs/RegexHelper.js"></script>
+    <script src="./js/main.js" defer></script>
+  </head>
+  <body>
+    <nav class="text-center">
+      <a href="https://www.naver.com">
+        <img src="img/NAVER Logo/01 NAVER Logo_Green.png" alt="NAVER Logo" />
+      </a>
+    </nav>
+    <form>
+      <div class="form-group info-signin">
+        <div id="id">
+          <label>
+            아이디
+            <input type="text" />
+            <span>@naver.com</span>
+          </label>
+        </div>
+        <div id="pw">
+          <label>
+            비밀번호
+            <input type="password" autocomplete="off" />
+            <i class="fa-solid fa-lock pw-icon"></i>
+          </label>
+        </div>
+        <div id="pw_re">
+          <label>
+            비밀번호 재확인
+            <input type="password" autocomplete="off" />
+            <i class="fa-solid fa-square-check pw_re-icon"></i>
+          </label>
+        </div>
+      </div>
+      <div class="form-group info-member">
+        <div id="name">
+          <label>
+            이름
+            <input type="text" />
+          </label>
+        </div>
+        <div id="birth">
+          <label>
+            <div>생년월일</div>
+            <input class="year" type="text" placeholder="년(4자)" />
+            <select class="month" name="month" id="month-dropdown">
+              <option value="">월</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <input class="day" type="text" placeholder="일" />
+          </label>
+        </div>
+        <div id="gender">
+          <label>
+            성별
+            <select name="gender" id="gender-dropdown">
+              <option value="">성별</option>
+              <option value="M">남자</option>
+              <option value="F">여자</option>
+              <option value="nor">선택 안함</option>
+            </select>
+          </label>
+        </div>
+        <div id="email">
+          <label>
+            본인 확인 이메일
+            <span class="selection">(선택)</span>
+            <input type="text" placeholder="선택입력" />
+          </label>
+        </div>
+      </div>
+      <div class="form-group info-check">
+        <div id="contact">
+          <label>
+            휴대전화
+            <select class="country-number" name="country_number">
+              <option value="korea">대한민국 +82</option>
+              <option value="japan">일본 +81</option>
+              <option value="china">중국 +86</option>
+            </select>
+            <input class="contact" type="text" placeholder="전화번호 입력" />
+            <button class="code-btn">인증번호 받기</button>
+            <input
+              class="code-input"
+              type="text"
+              placeholder="인증번호를 입력하세요"
+              disabled
+            />
+            <i class="code-icon hidden fa-solid fa-comment-dots"></i>
+          </label>
+        </div>
+      </div>
+      <button class="signup_btn text-center">가입하기</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js"></script>
+    <script src="./js/notice.js"></script>
+    <script>
+      Notice.init("서소희", "./naver-signup.pdf");
+    </script>
+  </body>
+</html>
