@@ -114,6 +114,7 @@ button {
   top: 0px;
   width: 100%;
   transition: all var(--animation-duration) ease-in-out;
+  z-index: 999;
 }
 
 .navbar--dark {
