@@ -1,0 +1,226 @@
+{
+  "navbar": {
+    "header": {
+      "icons": [
+        { "src": "img/icon_facebook.png", "alt": "facebook" },
+        { "src": "img/icon_twitter.png", "alt": "twitter" },
+        { "src": "img/icon_blog.png", "alt": "blog" },
+        { "src": "img/icon_instagram.png", "alt": "instagram" },
+        { "src": "img/icon_youtube.png", "alt": "youtube" }
+      ],
+      "logo": {
+        "src": "/img/logo_baskinrobbins.png",
+        "alt": "baskin robbins logo"
+      }
+    },
+    "menu": [
+      {
+        "title": "LOGIN JOIN",
+        "content": [],
+        "img": ["img/img_happypoint_app.jpg"]
+      },
+      {
+        "title": "FLAVOR OF THE MONTH",
+        "content": [],
+        "img": ["img/img_monthly_fom_220429.png"]
+      },
+      {
+        "title": "MENU",
+        "content": ["아이스크림", "아이스크림케이크", "음료", "커피", "디저트"]
+      },
+      {
+        "title": "영양성분 및 알레르기",
+        "content": ["아이스크림", "음료", "커피"]
+      },
+      { "title": "EVENT", "content": ["진행중이벤트", "당첨자발표"] },
+      { "title": "STORE", "content": ["매장찾기", "고객센터", "단체주문"] },
+      {
+        "title": "ABOUT",
+        "content": [
+          "공지사항",
+          "보도자료",
+          "채용정보",
+          "점포개설문의",
+          "CONTACT US"
+        ]
+      }
+    ]
+  },
+  "main": [
+    {
+      "src": "img/1714824551.jpg"
+    },
+    {
+      "src": "img/1672885751.png"
+    },
+    {
+      "src": "img/1649133684.png"
+    },
+    {
+      "src": "img/1714816944.png"
+    },
+    {
+      "src": "img/1714808856.png"
+    },
+    {
+      "src": "img/1667440402.png"
+    },
+    {
+      "src": "img/1667383155.png"
+    },
+    {
+      "src": "img/1643869369.png"
+    },
+    {
+      "src": "img/1664934495.png"
+    },
+    {
+      "src": "img/1649140992.png"
+    },
+    {
+      "src": "img/1670146295.png"
+    },
+    {
+      "src": "img/1667539209.png"
+    }
+  ],
+  "event": [
+    {
+      "src": "img/banner_delivery.png",
+      "cate": "img/stit_store.gif",
+      "desc": "해피오더 딜리버리로 간편하게 주문하세요!",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/banner_delivery_bm.png",
+      "cate": "img/stit_store.gif",
+      "desc": "배달의 민족에서 빠르게 주문하세요!",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/banner_delivery_ygy.png",
+      "cate": "img/stit_store.gif",
+      "desc": "요기요에서 손쉽게 주문하세요!",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/banner_delivery_kakao.png",
+      "cate": "img/stit_store.gif",
+      "desc": "카카오톡 주문하기에서 편리하게 주문하세요!",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/1670146074.png",
+      "cate": "img/stit_online.gif",
+      "desc": "기아 멤버스 최대 50% 제휴 혜택",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/1667538956.png",
+      "cate": "img/stit_online.gif",
+      "desc": "2022 배스킨라빈스 특별한 제휴혜택",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/1659436130.png",
+      "cate": "img/stit_store.gif",
+      "desc": "고소한 오트밀크와 깔끔한 콜드브루의 만남, 콜드브루 오트라떼 출시!",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/1643869329.png",
+      "cate": "img/stit_store.gif",
+      "desc": "KT 멤버십 고객이라면 누구나 파인트 30% 할인!",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/1667382917.png",
+      "cate": "img/stit_store.gif",
+      "desc": "현대카드 M포인트 50% 사용",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/1639297260.png",
+      "cate": "img/stit_store.gif",
+      "desc": "제휴 할인 카드 혜택 안내",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/1570702843.png",
+      "cate": "img/stit_online.gif",
+      "desc": "2018 한글날 기념 무료 글꼴 공개! 배스킨라빈스체",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/1578277305.png",
+      "cate": "img/stit_store.gif",
+      "desc": "1회용 컵 사용 줄이기 안내",
+      "etc": "상시진행"
+    },
+    {
+      "src": "img/banner_praise_2022-1.png",
+      "cate": "img/stit_store.gif",
+      "desc": "2022년 1분기 고객 BEST 칭찬점포 안내",
+      "etc": ""
+    }
+  ],
+  "menu": [{ "src": "img/img_menu_list_220429.png", "alt": "menu" }],
+  "store": [
+    {
+      "title": "img/h_store.png",
+      "src": "img/img_store.jpg",
+      "alt": "내 주변 가장 가까운 배스킨라빈스 매장을 찾아보세요! 다양한 즐거움과 새로움! 우리동네 배스킨라빈스! 매장찾기"
+    },
+    {
+      "title": "img/h_happyorder_delivery.png",
+      "src": "img/img_happyorder_delivery.png",
+      "alt": "배스킨라빈스 모바일 사전주문 & 배달서비스 - 해피오더 배달 콜센터 1670-3131 주문에서 결제 & 배송까지 간단하게!"
+    }
+  ],
+  "social": {
+    "icons": [
+      { "src": "img/sns_facebook.png", "alt": "facebook" },
+      { "src": "img/sns_twitter.png", "alt": "twitter" },
+      { "src": "img/sns_blog.png", "alt": "blog" },
+      { "src": "img/sns_instagram.png", "alt": "instagram" },
+      { "src": "img/sns_youtube.png", "alt": "youtube" }
+    ],
+    "instagram": [
+      { "src": "img/social01.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social02.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social03.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social04.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social05.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social06.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social07.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social08.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social09.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social10.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social11.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social12.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social13.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social14.jpg", "alt": "instagram tagged images" },
+      { "src": "img/social15.jpg", "alt": "instagram tagged images" }
+    ]
+  },
+  "footer": {
+    "policy": [
+      { "name": "점포개설문의" },
+      { "name": "채용문의" },
+      { "name": "윤리신고센터" },
+      { "name": "이용약관" },
+      { "name": "개인정보처리방침" },
+      { "name": "영상정보처리기기운영관리방침" },
+      { "name": "거래희망회사 사전등록" }
+    ],
+    "brand": [
+      { "src": "img/btn_happypoint.png", "alt": "spc story" },
+      { "src": "img/btn_happymarket.png", "alt": "spc story" },
+      { "src": "img/btn_spc_story.png", "alt": "spc story" },
+      { "src": "img/btn_norton.gif", "alt": "norton" },
+      { "src": "img/btn_ccm_2.png", "alt": "ccm" },
+      { "src": "img/btn_ksa.png", "alt": "ksa" }
+    ],
+    "logo": ["img/footer_logo.png"]
+  }
+}
