@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-const MenuContainer = styled.section`
+const MenuContainer = memo(styled.section`
   position: relative;
   width: 100%;
-  height: 1200px; //temp
+  height: 1200px;
   background: no-repeat top 0 left -524px/172% url("/img/bg_menu.jpg");
   .sectionTitle {
     padding-top: 48px;
@@ -17,9 +17,9 @@ const MenuContainer = styled.section`
     left: 50%;
     transform: translate(-50%, -50%);
   }
-`;
+`);
 
-const Menu = () => {
+const Menu = memo(() => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -43,6 +43,6 @@ const Menu = () => {
       ))}
     </MenuContainer>
   );
-};
+});
 
 export default Menu;

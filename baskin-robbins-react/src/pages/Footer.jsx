@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-const FooterContainer = styled.div`
+const FooterContainer = memo(styled.div`
   margin-top: 196px;
   display: flex;
   flex-direction: column;
@@ -48,6 +48,21 @@ const FooterContainer = styled.div`
       }
     }
   }
+  .sites {
+    width: 150px;
+    height: 30px;
+    appearance: none;
+    -webkit-appearance: none;
+    color: var(--color-text-gray);
+    border: 1px solid var(--color-text-gray);
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background-image: url("/img/family_size_off.png");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+  }
   .logo {
     padding: 24px 0;
   }
@@ -66,9 +81,9 @@ const FooterContainer = styled.div`
     padding: 12px 0 72px 0;
     color: #b3b3b3;
   }
-`;
+`);
 
-const Footer = () => {
+const Footer = memo(() => {
   const [items, setItems] = useState({});
 
   useEffect(() => {
@@ -96,7 +111,7 @@ const Footer = () => {
         {items?.brand?.map((item, index) => (
           <img src={item.src} alt={item.alt} key={index} />
         ))}
-        <select name="sites">
+        <select className="sites">
           <option value="FAMILY SITE">FAMILY SITE</option>
           <option value="배스킨 스쿨">배스킨 스쿨</option>
           <option value="SPC그룹사이트">SPC그룹사이트</option>
@@ -126,6 +141,6 @@ const Footer = () => {
       </div>
     </FooterContainer>
   );
-};
+});
 
 export default Footer;

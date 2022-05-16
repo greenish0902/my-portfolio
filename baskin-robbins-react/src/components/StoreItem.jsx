@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
-const StoreItemContainer = styled.div`
+const StoreItemContainer = memo(styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,9 +13,9 @@ const StoreItemContainer = styled.div`
   img {
     cursor: pointer;
   }
-`;
+`);
 
-const StoreItem = ({ title, src, alt }) => {
+const StoreItem = memo(({ title, src, alt }) => {
   return (
     <StoreItemContainer>
       <div className="sectionTitle">
@@ -24,6 +24,6 @@ const StoreItem = ({ title, src, alt }) => {
       <img className="storeImg" src={src} alt={alt} />
     </StoreItemContainer>
   );
-};
+});
 
 export default StoreItem;

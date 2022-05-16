@@ -1,12 +1,12 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import EventSwiper from "../components/EventSwiper";
 
-const EventContainer = styled.div`
+const EventContainer = memo(styled.div`
   margin-bottom: 60px;
-`;
+`);
 
-const Event = () => {
+const Event = memo(() => {
   return (
     <EventContainer className="section">
       <div className="sectionTitle">
@@ -15,6 +15,6 @@ const Event = () => {
       <EventSwiper className="swiperContainer" />
     </EventContainer>
   );
-};
+});
 
 export default Event;
