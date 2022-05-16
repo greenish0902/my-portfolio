@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-const SocialContainer = styled.div`
+const SocialContainer = memo(styled.div`
   position: relative;
+  * {
+    transition: all 300ms ease;
+  }
   .sectionTitle {
     padding-bottom: 12px;
   }
@@ -38,11 +41,15 @@ const SocialContainer = styled.div`
       width: 240px;
       height: 240px;
       margin: 2px;
+      border-radius: 4px;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
-`;
+`);
 
-const Social = () => {
+const Social = memo(() => {
   const [data, setData] = useState({});
   const url = "http://localhost:8000/social";
 
@@ -86,6 +93,6 @@ const Social = () => {
       </SocialContainer>
     )
   );
-};
+});
 
 export default Social;

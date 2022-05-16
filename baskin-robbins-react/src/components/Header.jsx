@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
-const HeaderContainer = styled.div`
+const HeaderContainer = memo(styled.div`
   padding: 0 120px;
   height: 136px;
   display: flex;
@@ -26,9 +26,9 @@ const HeaderContainer = styled.div`
     color: #000;
     font-size: 10px;
   }
-`;
+`);
 
-const Header = ({ data }) => {
+const Header = memo(({ data }) => {
   return (
     data && (
       <HeaderContainer>
@@ -46,6 +46,6 @@ const Header = ({ data }) => {
       </HeaderContainer>
     )
   );
-};
+});
 
 export default Header;

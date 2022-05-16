@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
-const EventItemContainer = styled.div`
+const EventItemContainer = memo(styled.div`
   display: flex;
   flex-direction: column;
   line-height: 2;
@@ -13,9 +13,9 @@ const EventItemContainer = styled.div`
     font-size: 14px;
     color: var(--color-text-gray);
   }
-`;
+`);
 
-const EventItem = ({ img, cate, desc, etc }) => {
+const EventItem = memo(({ img, cate, desc, etc }) => {
   return (
     <EventItemContainer>
       <img src={img} alt={desc} />
@@ -24,6 +24,6 @@ const EventItem = ({ img, cate, desc, etc }) => {
       <p className="etc">{etc}</p>
     </EventItemContainer>
   );
-};
+});
 
 export default EventItem;
