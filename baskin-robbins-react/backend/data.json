@@ -15,33 +15,27 @@
     },
     "menu": [
       {
-        "title": ["img/gnb_menu_1.png"],
+        "title": "LOGIN JOIN",
         "content": [],
         "img": ["img/img_happypoint_app.jpg"]
       },
       {
-        "title": ["img/gnb_menu_2.png"],
+        "title": "FLAVOR OF THE MONTH",
         "content": [],
         "img": ["img/img_monthly_fom_220429.png"]
       },
       {
-        "title": ["img/gnb_menu_3.png"],
+        "title": "MENU",
         "content": ["아이스크림", "아이스크림케이크", "음료", "커피", "디저트"]
       },
       {
-        "title": ["img/gnb_menu_4.png"],
+        "title": "영양성분 및 알레르기",
         "content": ["아이스크림", "음료", "커피"]
       },
+      { "title": "EVENT", "content": ["진행중이벤트", "당첨자발표"] },
+      { "title": "STORE", "content": ["매장찾기", "고객센터", "단체주문"] },
       {
-        "title": ["img/gnb_menu_5.png"],
-        "content": ["진행중이벤트", "당첨자발표"]
-      },
-      {
-        "title": ["img/gnb_menu_6.png"],
-        "content": ["매장찾기", "고객센터", "단체주문"]
-      },
-      {
-        "title": ["img/gnb_menu_7.png"],
+        "title": "ABOUT",
         "content": [
           "공지사항",
           "보도자료",

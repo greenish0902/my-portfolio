@@ -1,24 +1,28 @@
-import React, { memo } from "react";
+import React from "react";
 import styled from "styled-components";
 
-const NavItemContainer = memo(styled.li`
+const NavItemContainer = styled.li`
   position: relative;
-  padding: 0 44px;
+  padding: 0 40px;
   display: flex;
+  align-items: center;
   line-height: 3;
   cursor: pointer;
-  .hidden {
-    height: 0;
-  }
-  .active {
-    height: 274px;
-  }
-  ul {
-    padding-top: 6px;
+  .imgContent {
     position: absolute;
-    top: 42px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  /* .active {
+    border-top: 1px solid var(--color-line-brown);
+  } */
+  ul {
+    padding-top: 8px;
+    position: absolute;
+    top: 40px;
     left: 0;
     width: 100%;
+    height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,28 +33,10 @@ const NavItemContainer = memo(styled.li`
     li:hover {
       color: var(--color-pink);
     }
-    .imgContent {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
-  .bgBox {
-    position: fixed;
-    top: 188px;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid var(--color-line-brown);
-    z-index: 10;
-    &.active {
-      height: 280px;
-    }
-  }
-`);
+`;
 
-const NavMenu = memo(({ data, display, handleDisplay }) => {
+const NavMenu = ({ data, display, handleDisplay }) => {
   const { title, content, img } = data;
 
   return (
@@ -58,18 +44,17 @@ const NavMenu = memo(({ data, display, handleDisplay }) => {
       onMouseOver={() => handleDisplay(true)}
       onMouseOut={() => handleDisplay(false)}
     >
-      <img src={title} alt="navbar" />
+      <span className="title">{title}</span>
       <ul className={display ? "active" : "hidden"}>
         {content?.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
         {img?.map((src, index) => (
-          <li key={index}>{<img className="imgContent" src={src} />}</li>
+          <img className="imgContent" src={src} key={`img${index}`} />
         ))}
       </ul>
-      <div className={`${"bgBox"} ${display ? "active" : "hidden"}`}></div>
     </NavItemContainer>
   );
-});
+};
 
 export default NavMenu;

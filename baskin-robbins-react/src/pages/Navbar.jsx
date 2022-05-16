@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -6,30 +6,36 @@ import Header from "../components/Header";
 import NavMenu from "../components/NavMenu";
 import Loading from "../components/Loading";
 
-const NavbarContainer = memo(styled.div`
+const NavbarContainer = styled.div`
   position: relative;
   top: 0;
   border-bottom: 1px solid var(--color-line-brown);
-  * {
-    transition: all 500ms ease;
-  }
-  .line {
-    position: absolute;
-    width: 100%;
-    height: 0.2px;
-    top: 188px;
-    z-index: 100;
-    background-color: var(--color-line-deep-brown);
-  }
+  transition: all 500ms ease;
   .menubar {
-    height: 48px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
   }
-`);
+  .bgBox {
+    position: absolute;
+    top: 180px;
+    width: 100%;
+    height: 332px;
+    background-color: #fff;
+    border-bottom: 1px solid var(--color-line-brown);
+    z-index: 10;
+    transition: all 500ms ease;
+  }
+  .hidden {
+    /* transform: scaleY(0); */
+    transform: translateY(-100%);
+  }
+  .active {
+    transform: translateY(0);
+  }
+`;
 
-const Navbar = memo(() => {
+const Navbar = () => {
   const [data, setData] = useState({});
   const [display, setDisplay] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -52,10 +58,9 @@ const Navbar = memo(() => {
 
   return (
     data && (
-      <NavbarContainer height="264px">
+      <NavbarContainer>
         {loading && <Loading />}
         <Header data={data.header} className="header" />
-        <div className="line"></div>
         <ul className="menubar">
           {data?.menu?.map((elem, index) => (
             <NavMenu
@@ -66,9 +71,10 @@ const Navbar = memo(() => {
             />
           ))}
         </ul>
+        <div className={`${"bgBox"} ${display ? "active" : "hidden"}`}></div>
       </NavbarContainer>
     )
   );
-});
+};
 
 export default Navbar;

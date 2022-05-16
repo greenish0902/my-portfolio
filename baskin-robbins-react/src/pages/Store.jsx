@@ -1,15 +1,15 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
 import StoreItem from "../components/StoreItem";
 
-const StoreContainer = memo(styled.div`
+const StoreContainer = styled.div`
   display: flex;
   justify-content: center;
-`);
+`;
 
-const Store = memo(() => {
+const Store = () => {
   const [data, setData] = useState([]);
   const url = "http://localhost:8000/store";
 
@@ -38,6 +38,6 @@ const Store = memo(() => {
       </StoreContainer>
     )
   );
-});
+};
 
 export default Store;

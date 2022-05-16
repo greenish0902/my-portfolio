@@ -1,13 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-* {
-    font-family: 'Noto Sans KR', sans-serif;
+  * {
     margin: 0;
     padding: 0;
     user-select: none;
   }
   body {
+    font-family: 'Nanum Gothic', sans-serif;
     overflow-x: hidden;
   }
   ul {
@@ -18,9 +18,12 @@ const GlobalStyle = createGlobalStyle`
   }
   .hidden {
     opacity: 0;
+    /* transform: translateY(-20px); */
+    /* display: none !important; */
   }
   .active {
     opacity: 1;
+    /* display: flex !important; */
   }
   .sectionTitle {
     margin: auto;
