@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
-const BoxContainer = styled.div`
+const BoxContainer = memo(styled.div`
   width: 100%;
   .option {
     font-size: 12px;
@@ -9,20 +9,12 @@ const BoxContainer = styled.div`
   }
   input::placeholder {
     color: rgb(162, 162, 162);
-    text-align: ${(props) => props?.align};
   }
-`;
+`);
 
-const InputBox = ({
-  label,
-  name,
-  type = "text",
-  placeholder,
-  option,
-  align,
-}) => {
+const InputBox = memo(({ label, name, type = "text", placeholder, option }) => {
   return (
-    <BoxContainer align={align}>
+    <BoxContainer>
       <label htmlFor={label}>{label}</label>
       {option && <span className="option">(선택)</span>}
       <input
@@ -33,6 +25,6 @@ const InputBox = ({
       />
     </BoxContainer>
   );
-};
+});
 
 export default InputBox;

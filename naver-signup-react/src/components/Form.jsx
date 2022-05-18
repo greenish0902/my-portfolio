@@ -1,6 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, memo, useCallback } from "react";
 import styled from "styled-components";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLock,
@@ -8,13 +7,20 @@ import {
   faEnvelopeCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
-import InputBox from "../components/InputBox";
+import InputBox from "./InputBox";
 
 import RegexHelper from "../libs/RegexHelper";
 
-const InputBoxWrapper = styled.div`
+const InputBoxWrapper = memo(styled.div`
   position: relative;
   margin: 16px 0;
+  .placeholder {
+    position: absolute;
+    top: 44px;
+    right: 12px;
+    font-size: 16px;
+    color: rgb(162, 162, 162);
+  }
   .icons {
     position: absolute;
     top: 44px;
@@ -48,13 +54,9 @@ const InputBoxWrapper = styled.div`
       width: 30%;
     }
   }
-`;
-const getRandomCode = () => {
-  let rand = Math.floor(Math.random() * 10000).toString();
-  while (rand.length < 4) rand = Math.floor(Math.random() * 10) + rand;
-  return rand;
-};
-const Form = () => {
+`);
+
+const Form = memo(({ onSubmit }) => {
   const formRef = useRef({});
   const [visible, setVisible] = useState({
     id: false,
@@ -85,135 +87,169 @@ const Form = () => {
     code: "init",
   });
   const [code, setCode] = useState("");
-  const attach = (field, message) => {
+
+  const attach = useCallback((field, message) => {
     formRef.current[`${field.name}`].innerHTML = message;
-  };
-  const handleBlur = (event) => {
-    const field = event.target;
-    setVisible((visible) => ({ ...visible, [event.target.name]: true }));
-    const regexHelper = new RegexHelper();
-    try {
-      // 필드명에 따른 정규표현식 프로세스 수행
-      let errorMsg;
-      switch (field.name) {
-        case "id":
-          regexHelper.value(field, "필수 정보입니다.");
-          errorMsg =
-            "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
-          regexHelper.engNum(field, errorMsg);
-          regexHelper.minLength(field, 5, errorMsg);
-          regexHelper.maxLength(field, 20, errorMsg);
-          regexHelper.engNumSpecial(field, errorMsg);
-          break;
-        case "password":
-          regexHelper.value(field, "필수 정보입니다.");
-          errorMsg = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
-          regexHelper.minLength(field, 8, errorMsg);
-          regexHelper.maxLength(field, 16, errorMsg);
-          regexHelper.engNumAllSpecial(field, errorMsg);
-          break;
-        case "passwordRe":
-          regexHelper.value(field, "필수 정보입니다.");
-          regexHelper.compareTo(
-            formRef.current.form[1],
-            field,
-            "비밀번호가 일치하지 않습니다."
-          );
-          break;
-        case "name":
-          regexHelper.value(field, "필수 정보입니다.");
-          errorMsg =
-            "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)";
-          regexHelper.korEng(field, errorMsg);
-          break;
-        case "birthYear":
-          regexHelper.value(field, "필수 정보입니다.");
-          errorMsg = "태어난 년도 4자리를 정확하게 입력하세요.";
-          let rangeErrorMsg = "정말이세요?";
-          let currentYear = new Date().getFullYear();
-          regexHelper.value(field, errorMsg);
-          regexHelper.num(field, errorMsg);
-          regexHelper.minLength(field, 4, errorMsg);
-          regexHelper.maxLength(field, 4, errorMsg);
-          regexHelper.range(
-            field,
-            currentYear - 500,
-            currentYear,
-            rangeErrorMsg
-          );
-          break;
-        case "birthMonth":
-          regexHelper.value(field, "태어난 월을 선택하세요.");
-          break;
-        case "birthDay":
-          errorMsg = "태어난 일(날짜) 2자리를 정확하게 입력하세요.";
-          regexHelper.value(field, errorMsg);
-          regexHelper.maxLength(field, 2, errorMsg);
-          regexHelper.range(field, 1, 31, "생년월일을 다시 확인해주세요.");
-          break;
-        case "gender":
-          regexHelper.value(field, "필수 정보입니다.");
-          break;
-        case "email":
-          regexHelper.email(field, "이메일 주소를 다시 확인해주세요.");
-          break;
-        case "contact":
-          regexHelper.phone(field, "형식에 맞지 않는 번호입니다.");
-          break;
-        case "code":
-          regexHelper.value(field, "인증이 필요합니다.");
-          regexHelper.verify(field, code, "인증번호를 다시 확인해주세요.");
-          break;
-        default:
-          break;
+  }, []);
+
+  const getRandomCode = useCallback(() => {
+    let rand = Math.floor(Math.random() * 10000).toString();
+    while (rand.length < 4) rand = Math.floor(Math.random() * 10) + rand;
+    return rand;
+  }, []);
+
+  const handleBlur = useCallback(
+    (event) => {
+      const field = event.target;
+      setVisible((visible) => ({ ...visible, [event.target.name]: true }));
+      const regexHelper = new RegexHelper();
+      try {
+        // 필드명에 따른 정규표현식 프로세스 수행
+        let errorMsg;
+        switch (field.name) {
+          case "id":
+            regexHelper.value(field, "필수 정보입니다.");
+            errorMsg =
+              "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+            regexHelper.engNum(field, errorMsg);
+            regexHelper.minLength(field, 5, errorMsg);
+            regexHelper.maxLength(field, 20, errorMsg);
+            regexHelper.engNumSpecial(field, errorMsg);
+            break;
+          case "password":
+            regexHelper.value(field, "필수 정보입니다.");
+            errorMsg = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
+            regexHelper.minLength(field, 8, errorMsg);
+            regexHelper.maxLength(field, 16, errorMsg);
+            regexHelper.engNumAllSpecial(field, errorMsg);
+            break;
+          case "passwordRe":
+            regexHelper.value(field, "필수 정보입니다.");
+            regexHelper.compareTo(
+              formRef.current.form[1],
+              field,
+              "비밀번호가 일치하지 않습니다."
+            );
+            break;
+          case "name":
+            regexHelper.value(field, "필수 정보입니다.");
+            errorMsg =
+              "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)";
+            regexHelper.korEng(field, errorMsg);
+            break;
+          case "birthYear":
+            regexHelper.value(field, "필수 정보입니다.");
+            errorMsg = "태어난 년도 4자리를 정확하게 입력하세요.";
+            let rangeErrorMsg = "정말이세요?";
+            let currentYear = new Date().getFullYear();
+            regexHelper.value(field, errorMsg);
+            regexHelper.num(field, errorMsg);
+            regexHelper.minLength(field, 4, errorMsg);
+            regexHelper.maxLength(field, 4, errorMsg);
+            regexHelper.range(
+              field,
+              currentYear - 500,
+              currentYear,
+              rangeErrorMsg
+            );
+            break;
+          case "birthMonth":
+            regexHelper.value(field, "태어난 월을 선택하세요.");
+            break;
+          case "birthDay":
+            errorMsg = "태어난 일(날짜) 2자리를 정확하게 입력하세요.";
+            regexHelper.value(field, errorMsg);
+            regexHelper.maxLength(field, 2, errorMsg);
+            regexHelper.range(field, 1, 31, "생년월일을 다시 확인해주세요.");
+            break;
+          case "gender":
+            regexHelper.value(field, "필수 정보입니다.");
+            break;
+          case "email":
+            regexHelper.email(field, "이메일 주소를 다시 확인해주세요.");
+            break;
+          case "contact":
+            regexHelper.phone(field, "형식에 맞지 않는 번호입니다.");
+            break;
+          case "code":
+            regexHelper.value(field, "인증이 필요합니다.");
+            regexHelper.verify(field, code, "인증번호를 다시 확인해주세요.");
+            break;
+          default:
+            break;
+        }
+      } catch (error) {
+        console.log(error);
+        // error.field.focus();
+        setInfo((info) => ({
+          ...info,
+          [field.name]: "", // 잘못된 값을 입력했으므로 기존 값이 있어도 비우기 (색상 처리를 위한 상태값 변경)
+        }));
+        return attach(field, error.message);
       }
-    } catch (error) {
-      console.log(error);
-      // error.field.focus();
+      // 정규표현식 검사결과 이상이 없으면 상태값으로 저장
       setInfo((info) => ({
         ...info,
-        [field.name]: "", // 잘못된 값을 입력했으므로 기존 값이 있어도 비우기 (색상 처리를 위한 상태값 변경)
+        [field.name]: field.value,
       }));
-      console.log("info.code", info.code);
-      return attach(field, error.message);
-    }
-    // 정규표현식 검사결과 이상이 없으면 상태값으로 저장
-    setInfo((info) => ({
-      ...info,
-      [field.name]: field.value,
-    }));
-    // 필드명에 따른 성공 멘트 출력
-    switch (field.name) {
-      case "id":
-        return attach(field, "멋진 아이디네요!");
-      case "code":
-        return attach(field, "인증이 성공했습니다.");
-      default:
-        return attach(field, "");
-    }
-  };
-  const handleCodeClick = () => {
-    if (!info.contact) return;
-    const newCode = getRandomCode();
-    console.log("newCode", newCode);
-    setCode(newCode);
-    formRef.current.code.innerHTML =
-      "인증번호를 발송했습니다.(유효시간 30분)<br/>인증번호가 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요. <br/>이미 가입된 번호이거나, 가상전화번호는 인증번호를 받을 수 없습니다.";
-    formRef.current.codeInput.disabled = false;
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+      // 필드명에 따른 성공 멘트 출력
+      switch (field.name) {
+        case "id":
+          return attach(field, "멋진 아이디네요!");
+        case "code":
+          return attach(field, "인증이 성공했습니다.");
+        default:
+          return attach(field, "");
+      }
+    },
+    [attach, code]
+  );
+
+  const handleCodeClick = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (!info.contact) return;
+      const newCode = getRandomCode();
+      console.log("newCode", newCode);
+      setCode(newCode);
+      formRef.current.code.innerHTML =
+        "인증번호를 발송했습니다.(유효시간 30분)<br/>인증번호가 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요. <br/>이미 가입된 번호이거나, 가상전화번호는 인증번호를 받을 수 없습니다.";
+      formRef.current.codeInput.disabled = false;
+    },
+    [getRandomCode, info.contact]
+  );
+
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (
+        Object.keys(info).every((key) => {
+          console.log("info[key]", info[key]);
+          if (key === "email" || key === "countryNum") return true;
+          return info[key] !== "";
+        })
+      ) {
+        onSubmit({
+          id: info.id,
+          password: info.password,
+          name: info.name,
+          birthYear: info.birthYear,
+          birthMonth: info.birthMonth,
+          birthDay: info.birthDay,
+          gender: info.gender,
+          email: info.email,
+          contact: info.contact,
+        });
+      } else alert("모든 필수 입력란을 기입해 주세요.");
+    },
+    [info, onSubmit]
+  );
 
   return (
     <form onSubmit={handleSubmit} ref={(ref) => (formRef.current.form = ref)}>
       <InputBoxWrapper onBlur={handleBlur}>
-        <InputBox
-          label="아이디"
-          name="id"
-          placeholder="@naver.com"
-          align="right"
-        ></InputBox>
+        <InputBox label="아이디" name="id"></InputBox>
+        <div className="placeholder">@naver.com</div>
         <p
           ref={(ref) => (formRef.current.id = ref)}
           className={`regexMsg ${visible.id && "show"} ${
@@ -233,7 +269,7 @@ const Form = () => {
               visible.password ? (info.password ? "green" : "red") : "hidden"
             }`}
           >
-            안전
+            {info.password ? "안전" : "위험"}
           </span>
           <FontAwesomeIcon icon={faLock} />
         </div>
@@ -275,7 +311,12 @@ const Form = () => {
       <InputBoxWrapper onBlur={handleBlur}>
         <label style={{ display: "block" }}>생년월일</label>
         <div className="birthInfos">
-          <input name="birthYear" placeholder="년(4자)" />
+          <input
+            name="birthYear"
+            placeholder="년(4자)"
+            onFocus={handleBlur}
+            onChange={handleBlur}
+          />
           <select name="birthMonth" onFocus={handleBlur} onChange={handleBlur}>
             <option value="">월</option>
             {[...new Array(12)].map((_, index) => (
@@ -381,6 +422,6 @@ const Form = () => {
       </button>
     </form>
   );
-};
+});
 
 export default Form;

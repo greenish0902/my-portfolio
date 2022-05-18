@@ -1,5 +1,39 @@
 {
-  "members": [],
+  "members": [
+    {
+      "id": "greenish0902",
+      "password": "1234567890-=",
+      "name": "서소희",
+      "birthYear": "1999",
+      "birthMonth": "9",
+      "birthDay": "2",
+      "gender": "female",
+      "email": "sohui2470@gmail.com",
+      "contact": "01012345678"
+    },
+    {
+      "id": "hello",
+      "password": "world",
+      "name": "hello",
+      "birthYear": "2000",
+      "birthMonth": "1",
+      "birthDay": "1",
+      "gender": "male",
+      "email": "",
+      "contact": "01022222222"
+    },
+    {
+      "id": "id",
+      "password": "pw",
+      "name": "idpw",
+      "birthYear": "1800",
+      "birthMonth": "2",
+      "birthDay": "29",
+      "gender": "-",
+      "email": "",
+      "contact": "0106324938"
+    }
+  ],
   "department": [
     {
       "id": 101,
