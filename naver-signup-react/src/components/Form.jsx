@@ -1,12 +1,37 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLock,
+  faSquareCheck,
+  faEnvelopeCircleCheck,
+} from "@fortawesome/free-solid-svg-icons";
+
 import InputBox from "../components/InputBox";
 
 import RegexHelper from "../libs/RegexHelper";
 
 const InputBoxWrapper = styled.div`
+  position: relative;
   margin: 16px 0;
+  .icons {
+    position: absolute;
+    top: 44px;
+    right: 12px;
+    font-size: 18px;
+    color: rgb(198, 198, 198);
+    .iconSpan {
+      width: 32px;
+      position: absolute;
+      top: 4px;
+      right: 12px;
+      font-size: 12px;
+    }
+    &.code {
+      top: 160px;
+    }
+  }
   .birthInfos {
     display: flex;
     justify-content: space-between;
@@ -144,7 +169,7 @@ const Form = () => {
       }
     } catch (error) {
       console.log(error);
-      error.field.focus();
+      // error.field.focus();
       setInfo((info) => ({
         ...info,
         [field.name]: "", // 잘못된 값을 입력했으므로 기존 값이 있어도 비우기 (색상 처리를 위한 상태값 변경)
@@ -183,7 +208,12 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit} ref={(ref) => (formRef.current.form = ref)}>
       <InputBoxWrapper onBlur={handleBlur}>
-        <InputBox label="아이디" name="id"></InputBox>
+        <InputBox
+          label="아이디"
+          name="id"
+          placeholder="@naver.com"
+          align="right"
+        ></InputBox>
         <p
           ref={(ref) => (formRef.current.id = ref)}
           className={`regexMsg ${visible.id && "show"} ${
@@ -193,6 +223,20 @@ const Form = () => {
       </InputBoxWrapper>
       <InputBoxWrapper onBlur={handleBlur}>
         <InputBox label="비밀번호" name="password" type="password"></InputBox>
+        <div
+          className={`icons ${
+            visible.password && (info.password ? "green" : "red")
+          }`}
+        >
+          <span
+            className={`iconSpan ${
+              visible.password ? (info.password ? "green" : "red") : "hidden"
+            }`}
+          >
+            안전
+          </span>
+          <FontAwesomeIcon icon={faLock} />
+        </div>
         <p
           ref={(ref) => (formRef.current.password = ref)}
           className={`regexMsg ${visible.password && "show"} ${
@@ -206,6 +250,12 @@ const Form = () => {
           name="passwordRe"
           type="password"
         ></InputBox>
+        <FontAwesomeIcon
+          icon={faSquareCheck}
+          className={`icons ${
+            visible.passwordRe && (info.passwordRe ? "green" : "red")
+          }`}
+        />
         <p
           ref={(ref) => (formRef.current.passwordRe = ref)}
           className={`regexMsg ${visible.passwordRe && "show"} ${
@@ -307,6 +357,13 @@ const Form = () => {
           disabled
           ref={(ref) => (formRef.current.codeInput = ref)}
           onBlur={handleBlur}
+          style={{ position: "relative" }}
+        />
+        <FontAwesomeIcon
+          icon={faEnvelopeCircleCheck}
+          className={`icons code ${
+            visible.code ? (info.code ? "green" : "red") : "hidden"
+          }`}
         />
         <p
           ref={(ref) => {

@@ -30,16 +30,21 @@ const GlobalStyle = createGlobalStyle`
     border: 1px solid #dedede;
   }
   .red {
-    color: red;
+    color: #ff1e1e !important;
+    opacity: 1;
   }
   .green {
-    color: #00b853;
+    color: #00b853 !important; 
+    opacity: 1;
   }
   .regexMsg {
     display: none;
   }
   .show {
     display: block;
+  }
+  .hidden {
+    display: none;
   }
   button {
     color: white;
@@ -55,6 +60,13 @@ const GlobalStyle = createGlobalStyle`
     font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
+  }
+  select {
+    appearance: none;
+    background-image: url("/img/caret-down-solid.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    background-size: 12px;
   }
   input::placeholder {
     color: rgb(162, 162, 162);

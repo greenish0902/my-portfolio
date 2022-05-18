@@ -9,12 +9,20 @@ const BoxContainer = styled.div`
   }
   input::placeholder {
     color: rgb(162, 162, 162);
+    text-align: ${(props) => props?.align};
   }
 `;
 
-const InputBox = ({ label, name, type = "text", placeholder, option }) => {
+const InputBox = ({
+  label,
+  name,
+  type = "text",
+  placeholder,
+  option,
+  align,
+}) => {
   return (
-    <BoxContainer>
+    <BoxContainer align={align}>
       <label htmlFor={label}>{label}</label>
       {option && <span className="option">(선택)</span>}
       <input
